@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet"> 
+    <style>
+
+@media(min-width: 738px){
+
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{ 
+    font-family: "Amazon Ember",Arial,sans-serif;
+    background-color: white;   
+}       
+
+.style-div{
+    display: inline-block; 
+}
+
+#style-div-logo{
+    width: 13%; 
+}
+
+#style-div-input{
+    width: 57%;  
+}
+
+#style-div-profile{
+    width: 30%;   
+}
+
+header{  
+    height: 4rem;
+    border-bottom:solid rgb(228, 227, 227) 1px ;
+    box-shadow: 0 0px 5px 0 rgba(0,0,0, 0.2);
+    display: flex;
+    align-items: center; 
+}
+
+#logo-container{
+    display: flex;  
+    align-items: center; 
+    width: 100%; 
+    text-align: left;  
+}
+
+
+#logo{ 
+    margin-left: 1vw; 
+    font-family: 'Potta One', cursive;
+    cursor: pointer; 
+}
+
+#input-container{
+    display: flex;   
+    align-items: center;
+    width: fit-content; 
+}
+
+.todo-input{ 
+    border-top:solid rgb(236, 234, 234) 1px;
+    border-bottom:solid rgb(236, 234, 234)1px;
+    border-left:solid rgb(236, 234, 234) 1px; 
+    border-radius: 100vh 0vh 0vh 100vh;
+    width: 33.7vw;
+    height: 50px;
+    color: rgb(2, 1, 17);
+    padding: 0.50rem;
+    padding-left: 0.75rem;
+    font-size: 1rem; 
+    margin-left: 18vw;
+    border-right: solid rgb(236, 234, 234)1px;
+    background-color: rgb(236, 234, 234); 
+    outline: none;
+}  
+
+#profile{  
+    display: flex;
+    float: right;
+    align-items: center;
+    width: fit-content;  
+    
+}
+
+#username{ 
+    width: fit-content;  
+    margin-right: 0.5vw;
+    text-align: right;
+}
+
+#menu-icon{
+    padding-right: 0.5vw;  
+    cursor: pointer;  
+}
+
+#pic{ 
+    background-position: center;
+    background-size: cover; 
+    border-radius: 100vh;
+    display: inline-block;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    margin-right: 0.5vw;
+}
+
+#to-do-button-div{
+    background-color: rgb(236, 234, 234);
+    transition: 0.3s; 
+    border-radius: 0vh 100vh 100vh 0vh;
+    padding-right: 0.25rem;
+    border: solid transparent 1px;
+    color: rgb(2, 1, 17);
+}
+
+#to-do-button-div:hover{  
+    background-color: rgb(2, 1, 17);
+    color: white; 
+    cursor: pointer;
+} 
+
+#search{
+    background-color: transparent;
+    padding: 1rem;
+}
+
+#menu{
+   font-size: 2.5rem;   
+}
+
+#uploadfield, #uploadfield2{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#uploadfield + label { 
+    color: white; 
+    border: solid rgb(2, 1, 17) 1px;
+    display: inline-block;
+    cursor: pointer;   
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.1rem;
+    background-color: rgb(2, 1, 17);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: 0.5s; 
+    border-radius: 100vh;
+}
+
+#upload-icon{
+    padding-right: 0.25rem;
+}
+
+#uploadfield:focus + label,
+#uploadfield + label:hover {  
+    background-color: rgb(1, 9, 41); 
+}  
+
+#upload-container{ 
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+#main{
+    text-align: center; 
+    height: 70vh;
+}
+
+#items-container{
+    display: inline-block;   
+    max-width: 90%;
+    text-align: center;
+    margin-bottom: 2rem;  
+}
+
+.items{
+    width: 250px;
+    height: 250px; 
+    display: inline-block; 
+    margin: 1rem; 
+    border-radius: 0.7rem 0.7rem 0.25rem 0.25rem; 
+    box-shadow: 0 5px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+.item-heros{
+    width: 100%;
+    height: 57%;
+    background-color: rgb(236, 234, 234); 
+    border-radius: 0.7rem 0.7rem 0rem 0rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Potta One', cursive;
+    color: rgb(126, 126, 126);   
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-descriptions{
+    width: 100%;
+    height: 43%;
+    padding: 0.7rem; 
+    border-radius: 0rem 0rem 0.25rem 0.25rem;  
+    text-align: left;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#item-share, #item-delete, #item-download{ 
+    color: rgb(126, 126, 126);
+    font-size: 1rem;
+    float: right;
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+} 
+
+#item-share:hover, #item-delete:hover, #item-download:hover{
+    color: black;
+}
+
+.item-title{
+    max-height: 23px;
+}
+
+.item-title, .timestamp{
+    padding-bottom: 0.15rem;  
+    color: black; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timestamp{ 
+    color: rgb(126, 126, 126);
+    font-size: 0.7rem;
+}
+
+#modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    pointer-events: none;
+    display: none; 
+}
+
+.modal{
+    background-color: white;
+    padding: 0em 0em 1em 1em; 
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all; 
+    position: absolute;
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+.modal-title{ 
+    padding-bottom: 0.5em;  
+    padding-top: 1em;  
+    display: block;
+}
+
+.modal-close{
+    float: right;
+    margin-right: 0.5em;
+    color: rgb(126, 126, 126);
+    cursor: pointer;
+}
+
+.modal-close:hover{
+    color: black;
+}
+
+.modal-input{
+    display: inline-block; 
+    width: 81%;
+    border-radius: 100vh 0vh 0vh 100vh;
+    border: solid rgb(236, 234, 234) 1px; 
+    height: 33.5px;  
+    padding-left: 8px;
+    background-color: white;
+    outline: none;  
+}
+
+.modal-icon-container{
+    width: 12%;
+    display: inline-block;
+    background-color: black; 
+    padding: 2.5px 9px 5px 5px;
+    border: solid black 1px; 
+    border-left: solid transparent 1px; 
+    border-radius: 0vh 100vh 100vh 0vh; 
+    transition: 0.25s;
+    cursor: pointer;
+    color: white;
+}  
+
+#modal-icon{
+    width: 100%; 
+    height: 100%; 
+}
+
+#menu-container{
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    height: calc(100%-4rem);
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    pointer-events: none;
+    display: none; 
+}
+
+#menu{
+    background-color: white; 
+    border-radius: 0em 0em 0.25em 0.25em;  
+    display: inline-block; 
+    pointer-events: all; 
+    position: absolute;
+    width: 250px;
+    height: 290px;
+    top: 0;
+    right: 0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0, 0.2); 
+    font-size: 1.5rem; 
+}
+
+#menu-list{
+    font-family: 'Noto Sans JP', sans-serif; 
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; 
+    font-size: 1rem;
+} 
+
+.menu-list-items{
+    cursor: pointer;
+    padding: 1rem;
+} 
+
+.menu-list-items:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.menu-list-items i{
+    padding-right: 20px;
+}
+
+#settings{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#settings-icon{
+    padding-right: 12px;
+    padding-left: 13px;
+}
+
+#delete-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    display: none; 
+    background-color: rgba(0,0,0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-modal{
+    background-color: white;  
+    padding: 1rem; 
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+    text-align: center;
+}
+
+#yes, #no{
+    display: inline-block;
+    border-radius: 10px; 
+    padding: 2px 10px;
+    text-decoration: none;
+    margin: 1rem 0.25rem 0.5rem 0.25rem;  
+    cursor: pointer;
+}
+
+#no{
+    background-color: white;
+    color: green;
+    border: solid green 1px;
+}
+
+#no:hover{
+    background-color: green;
+    border: solid green 1px;
+    color: white;
+}
+
+#yes{
+    background-color: white;
+    color: red;
+    border: solid red 1px
+}
+
+#yes:hover{
+    background-color: red;
+    border: solid red 1px;
+    color: white;
+}
+
+#details-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    display: none; 
+    background-color: rgba(0,0,0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#password-modal{
+    background-color: white;   
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+#password-modal h1{ 
+    font-size: 1rem;
+    text-align: center; 
+}
+
+#password-modal input{
+    border-radius: 100vh;
+    border: solid rgb(236, 234, 234) 1px;
+    background-color: rgb(236, 234, 234);
+    height: 2rem; 
+    display: inline-block;
+    margin: 1rem 1rem 1.5rem 1rem;
+    padding: 0.5rem;
+    outline: none;
+}
+
+#-password-modal-close{
+    margin-left: 92%;  
+    cursor: pointer;
+}  
+
+#details-modal{
+    background-color: white;   
+    width: 400px;
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2);  
+    display: none;
+} 
+
+#details-modal-close{ 
+    float: right;
+    margin: 0.4rem 0.4rem 0 0;
+    cursor: pointer;
+}
+
+#details-modal h1{ 
+    margin: 1rem;
+}
+
+#name-box, #password-box, #email-box{ 
+    margin: 0 1rem 0rem 1rem;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    width: calc(100%-2rem);
+    height: 80px;
+    border: solid rgb(236, 234, 234) 1px; 
+}
+
+#name-box p, #password-box p, #email-box p{ 
+    display: inline-block;
+    padding-bottom: 1rem;   
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+}
+
+#email-box,#password-box{
+    border-top: none;
+}
+
+#password-box{
+    margin-bottom: 1rem;
+}
+ 
+.details-button-container{
+    float: right; 
+    padding-top: 1.2rem;
+}
+
+.details-button{ 
+    text-decoration: none;
+    border: solid rgb(194, 194, 194) 1px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;  
+    padding: 0rem 1rem 0rem 1rem;
+    margin-top: 1rem;
+    transition: 0.2s;
+}
+
+.details-button:hover{
+    background-color: black;
+    color: white;
+    border: solid rgb(0, 0, 0) 1px;
+}
+
+}
+
+@media(max-width: 738px){
+
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{ 
+    font-family: "Amazon Ember",Arial,sans-serif;
+    background-color: white;   
+}        
+
+#logout-button{ 
+    color: white; 
+    display: inline-block;
+    cursor: pointer;   
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.1rem;
+    background-color: rgb(2, 1, 17);
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: 0.5s; 
+    border-radius: 4%;
+    border: rgb(2, 1, 17) 1px;
+}
+
+.style-div{
+    display: inline-block; 
+}
+
+#style-div-logo{
+    width: 0%;  
+}
+
+#style-div-input{
+    width: 80%;  
+}
+
+#style-div-profile{
+    width: 20%; 
+    float: right;
+}
+
+header{  
+    height: 4rem;
+    border-bottom:solid rgb(228, 227, 227) 1px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0px 5px 0 rgba(0,0,0, 0.2);
+}
+
+#logo-container{
+    display: flex;  
+    align-items: center; 
+    width: 100%; 
+    text-align: left;
+}
+
+
+#logo{
+    color: rgb(236, 234, 234); 
+    font-family: 'Potta One', cursive;
+    cursor: pointer;
+    display: none;
+}
+
+#input-container{
+    display: flex;  
+    align-items: center;  
+    width: 100%;
+}
+
+.todo-input{ 
+    border-top:solid white 1px;
+    border-bottom:solid white 1px;
+    border-left:solid white 1px;
+    border-radius: 100vh 0vh 0vh 100vh;
+    width: 80%;
+    height: 50px;
+    color: rgb(2, 1, 17);
+    padding: 0.50rem;
+    padding-left: 0.75rem; 
+    margin-left: 0.25rem;
+    font-size: 1rem; 
+    border-right: solid rgb(236, 234, 234)1px;
+    background-color: rgb(236, 234, 234);    
+    outline: none;
+}  
+
+#profile{  
+    display: flex;
+    text-align: right;
+    align-items: center;
+    justify-content: right;
+    width: fit-content;
+    float: right;
+}
+
+#username{ 
+    padding-right: 5px;
+    width: 100px;
+    display: none;
+}
+
+#menu-icon{ 
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+#pic{ 
+    background-position: center;
+    background-size: cover;
+    border-radius: 49%;
+    display: inline-block;
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+}
+
+#to-do-button-div{
+    background-color: rgb(236, 234, 234); 
+    transition: 0.5s; 
+    border-radius: 0 100vh 100vh 0; 
+}
+
+#to-do-button-div:hover{  
+    background-color: rgb(236, 234, 234); 
+    color: white;
+    cursor: pointer;
+} 
+
+#search{
+    background-color: transparent;
+    padding: 1rem;
+}
+
+#menu{
+   font-size: 2.5rem;
+}
+
+#uploadfield, #uploadfield2{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#uploadfield + label { 
+    color: white; 
+    display: inline-block;
+    cursor: pointer;   
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.1rem;
+    background-color: rgb(2, 1, 17);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: 0.5s; 
+    border-radius: 100vh;
+}
+
+#upload-icon{
+    padding-right: 0.25rem;
+}
+
+#uploadfield:focus + label,
+#uploadfield + label:hover {  
+    background-color: rgb(2, 1, 17); 
+}  
+
+#upload-container{  
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+#main{
+    text-align: center; 
+    height: 70vh;
+}
+
+#items-container{
+    display: inline-block;   
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;  
+    margin-top: 1rem;
+}
+
+.items{
+    width: 250px;
+    height: 250px; 
+    display: inline-block; 
+    margin: 1rem; 
+    border-radius: 0.7rem 0.7rem 0.25rem 0.25rem; 
+    box-shadow: 0 5px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+.item-heros{
+    width: 100%;
+    height: 57%;
+    background-color: rgb(236, 234, 234); 
+    border-radius: 0.7rem 0.7rem 0rem 0rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Potta One', cursive;
+    color: rgb(126, 126, 126);   
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-descriptions{
+    width: 100%;
+    height: 43%;
+    padding: 0.7rem; 
+    border-radius: 0rem 0rem 0.25rem 0.25rem;  
+    text-align: left;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#item-share, #item-delete, #item-download{ 
+    color: rgb(126, 126, 126);
+    font-size: 1rem;
+    float: right;
+    padding-top: 0.3rem;
+    padding-left: 1rem; 
+    cursor: pointer;
+    transition: 0.3s;
+} 
+
+#item-share:hover, #item-delete:hover, #item-download:hover{
+    color: black;
+}
+
+.item-title{
+    max-height: 23px;
+}
+
+.item-title, .timestamp{
+    padding-bottom: 0.15rem;  
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timestamp{ 
+    color: rgb(126, 126, 126);
+    font-size: 0.7rem;
+}
+
+#modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    pointer-events: none;
+    display: none; 
+}
+
+.modal{
+    background-color: white;
+    padding: 0em 0em 1em 1em; 
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all; 
+    position: absolute;
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+.modal-title{ 
+    padding-bottom: 0.5em;  
+    padding-top: 1em;  
+    display: block;
+}
+
+.modal-close{
+    float: right;
+    margin-right: 0.5em;
+    color: rgb(126, 126, 126);
+    cursor: pointer;
+}
+
+.modal-close:hover{
+    color: black;
+}
+
+.modal-input{
+    display: inline-block; 
+    width: 81%;
+    border-radius: 100vh 0vh 0vh 100vh;
+    border: solid rgb(236, 234, 234) 1px; 
+    height: 33.5px;  
+    padding-left: 8px;
+    background-color: rgb(236, 234, 234);
+    outline: none;  
+}
+
+.modal-icon-container{
+    width: 12%;
+    display: inline-block;
+    background-color: rgb(236, 234, 234);
+    color: black; 
+    padding: 2.5px 9px 5px 5px;
+    border: solid rgb(236, 234, 234) 1px; 
+    border-radius: 0vh 100vh 100vh 0vh; 
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.modal-icon-container:hover{ 
+    background-color: black;
+    color: rgb(236, 234, 234); 
+    border: solid black 1px;  
+} 
+
+#modal-icon{
+    width: 100%; 
+    height: 100%; 
+}
+
+#menu-container{
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    height: calc(100%-4rem);
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    pointer-events: none;
+    display: none; 
+}
+
+#menu{
+    background-color: white; 
+    border-radius: 0em 0em 0.25em 0.25em;  
+    display: inline-block; 
+    pointer-events: all; 
+    position: absolute;
+    width: 250px;
+    height: 290px;
+    top: 0;
+    right: 0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0, 0.2); 
+    font-size: 1.5rem; 
+}
+
+#menu-list{
+    font-family: 'Noto Sans JP', sans-serif; 
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; 
+    font-size: 1rem;
+} 
+
+.menu-list-items{
+    cursor: pointer;
+    padding: 1rem;
+} 
+
+.menu-list-items:hover{
+    background-color: rgb(236, 234, 234);
+}
+
+.menu-list-items i{
+    padding-right: 20px;
+}
+
+#settings{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+#settings-icon{
+    padding-right: 12px;
+    padding-left: 13px;
+}
+
+#delete-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    display: none; 
+    background-color: rgba(0,0,0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-modal{
+    background-color: white;  
+    padding: 1rem; 
+    width: 90vw;
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+    text-align: center;
+}
+
+#yes, #no{
+    display: inline-block;
+    border-radius: 10px; 
+    padding: 2px 10px;
+    text-decoration: none;
+    margin: 1rem 0.25rem 0.5rem 0.25rem;  
+    cursor: pointer;
+}
+
+#no{
+    background-color: white;
+    color: green;
+    border: solid green 1px;
+}
+
+#no:hover{
+    background-color: green;
+    border: solid green 1px;
+    color: white;
+}
+
+#yes{
+    background-color: white;
+    color: red;
+    border: solid red 1px
+}
+
+#yes:hover{
+    background-color: red;
+    border: solid red 1px;
+    color: white;
+}
+
+#details-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;  
+    font-family: 'Noto Sans JP', sans-serif;   
+    display: none; 
+    background-color: rgba(0,0,0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#password-modal{
+    background-color: white;   
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2); 
+}
+
+#password-modal h1{ 
+    font-size: 1rem;
+    text-align: center; 
+}
+
+#password-modal input{
+    border-radius: 100vh;
+    border: solid rgb(236, 234, 234) 1px;
+    background-color: rgb(236, 234, 234);
+    height: 2rem; 
+    display: inline-block;
+    margin: 1rem 1rem 1.5rem 1rem;
+    padding: 0.5rem;
+    outline: none;
+}
+
+#-password-modal-close{
+    margin-left: 92%;  
+    cursor: pointer;
+}  
+
+#details-modal{
+    background-color: white;   
+    width: 90VW;
+    border-radius: 0.5em;  
+    display: inline-block; 
+    pointer-events: all;  
+    box-shadow: 0 4px 15px 0 rgba(0,0,0, 0.2);  
+    display: none;
+} 
+
+#details-modal-close{ 
+    float: right;
+    margin: 0.4rem 0.4rem 0 0;
+    cursor: pointer;
+}
+
+#details-modal h1{ 
+    margin: 1rem;
+}
+
+#name-box, #password-box, #email-box{ 
+    margin: 0 1rem 0rem 1rem;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    width: calc(100%-2rem);
+    height: 80px;
+    border: solid rgb(236, 234, 234) 1px; 
+}
+
+#name-box p, #password-box p, #email-box p{ 
+    display: inline-block;
+    padding-bottom: 1rem;   
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+}
+
+#email-box,#password-box{
+    border-top: none;
+}
+
+#password-box{
+    margin-bottom: 1rem;
+}
+ 
+.details-button-container{
+    float: right; 
+    padding-top: 1.2rem;
+}
+
+.details-button{ 
+    text-decoration: none;
+    border: solid rgb(194, 194, 194) 1px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;  
+    padding: 0rem 1rem 0rem 1rem;
+    margin-top: 1rem;
+    transition: 0.2s;
+}
+}
+    </style>
+
+    <script src="https://use.fontawesome.com/6a144b21aa.js"></script>
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='-1'> 
+    <meta http-equiv='pragma' content='no-cache'> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abox - Homepage</title>
+</head>
+<body>
+    
+  <header>
+
+            <div class="style-div" id="style-div-logo">
+
+                <div id="logo-container">
+
+                    <h1 id="logo">Abox</h1> 
+    
+                </div>
+
+            </div>
+
+          <div class="style-div" id="style-div-input">
+
+            <div id="input-container">
+
+                <input placeholder="Search items" type="text" class="todo-input">
+                <div id="to-do-button-div" >
+                  <i id="search" class="fa fa-search"></i>
+                </div> 
+    
+              </div>
+
+          </div>
+
+          <div class="style-div" id="style-div-profile">
+
+            <div id="profile">  
+
+                <span id="username"></span> 
+                <i id="menu-icon" class="fa fa-chevron-down"></i>
+                <input type="file" id="uploadfield2">
+                <label for="uploadfield2" id="pic"></label>
+    
+              </div>
+
+          </div>
+  </header>
+
+  <section id="upload-container">
+
+    <input id="uploadfield" type="file" name="uploadfield"> 
+
+    <label id="to-do-plus-div"  for="uploadfield">
+        <i id="upload-icon" class="fa fa-upload"></i>
+        Upload
+    </label>
+
+  </section>
+
+  <section id="main">
+     
+    <div id="items-container"></div>
+
+  </section> 
+
+  <div id="modal-container">
+
+  </div>
+
+  <div id="menu-container">
+
+     <div id="menu">
+         <div id="settings"><i id="settings-icon" class="fa fa-cog"></i><strong>Settings</strong></div>
+         <ul id="menu-list">
+             <li class="menu-list-items" id="menu-list-item1" style="padding-left: 21px;"><i class="fa fa-info"></i>Change Account Details</li>
+             <li class="menu-list-items" id="menu-list-item2"><label for="uploadfield2" style="cursor: pointer;"><i class="fa fa-picture-o"></i>Change Profile Picture</label></li>
+             <li class="menu-list-items" id="menu-list-item3"><i class="fa fa-eraser"></i>Delete Account</li>
+             <li class="menu-list-items" id="menu-list-item4" onclick="signout()"><i class="fa fa-sign-out"></i>Log-out</li>
+         </ul>
+     </div>
+
+  </div>
+
+<div id="delete-container">
+
+    <div id="delete-modal">
+      <p>Are you sure you want to delete your ABox account?</p>  
+      <a href="#" id="yes">Yes</a>
+      <a href="#" id="no">No</a>
+    </div>
+
+</div>
+
+<div id="details-container">
+
+    <div id="password-modal">
+        <i id="-password-modal-close" class="fa fa-close"></i>
+        <h1>Enter Your Password</h1>
+        <input type="password" placeholder="Password">
+    </div>
+    <div id="details-modal">
+        <i id="details-modal-close" class="fa fa-close"></i>
+        <h1>Account Details</h1>
+        <div id="name-box">
+            <p><strong>Name:</strong></p>
+            <div class="details-button-container"><a class="details-button" href="#">Edit</a></div>
+        </div>
+        <div id="email-box">
+            <p><strong>Email:</strong></p>
+            <div class="details-button-container"><a class="details-button" href="#">Edit</a></div>
+        </div>
+        <div id="password-box">
+            <p><strong>Password:</strong></p>
+            <div class="details-button-container"><a class="details-button" href="#">Edit</a></div>
+        </div> 
+    </div>
+
+</div>
+
+
+<script>  
+
+let descriptionsNumber = 0;
+let itemsNumber = 0; 
+let titleNumber = 0;
+let shareNumber = 0;
+let modalNumber = 0;
+let userinfo;
+const url = window.location.href.split('/')
+const url1 = url[6].substring(2)
+
+fetch(`https://abox-project.xyz/apiget/profilepic/${url1}`)
+.then(response=>{
+    response.blob()
+    .then(blob=>{
+
+        if(blob.size < 200){
+            document.querySelector('#pic').style.backgroundImage = `url('default.png')`
+        }
+        else{
+            document.querySelector('#pic').style.backgroundImage = `url('${window.URL.createObjectURL(blob)}')`
+        }
+
+    }).catch(error=>console.log(error))
+})
+.catch(error=>console.log(error))
+
+fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
+.then((response)=>{ 
+     return response.json();
+}) 
+.then(data=>{
+
+    userinfo = data; 
+
+    document.querySelector('#username').innerHTML = `Hello, ${data.user.name}`
+    for(let i = 0; i < data.files.length; i++){
+
+       let item = document.createElement('div')
+       item.classList.add('items')  
+       item.classList.add(`${data.files[i].folder}`) 
+       item.id = `item${itemsNumber}`
+       itemsNumber++
+
+       let hero = document.createElement('div')
+       hero.classList.add('item-heros')
+       const typearr= data.files[i].type.split('/')    
+       if(typearr[0] === 'image'){
+           fetch(`https://abox-project.xyz/apiget/file/${url1}/${data.files[i].folder}/${data.files[i].name}`)
+           .then(response=>{
+                 response.blob()
+                 .then(imageblob=>{
+                   hero.style.backgroundImage = `url('${window.URL.createObjectURL(imageblob)}')`
+                   hero.style.backgroundPosition = 'center'
+                   hero.style.backgroundSize = 'cover'
+                   hero.innerHTML = ''
+                 }).catch(error=>console.log(error))
+                }
+            )
+           .catch()
+       }
+       else if(data.files[i].type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+            hero.innerHTML = `MICROSOFT OFFICE FILE` 
+       }
+       else if(data.files[i].type.length >= 50 && typearr !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+            hero.innerHTML = `${typearr[0].toUpperCase()} FILE` 
+       }
+       else{
+           hero.innerHTML = `${typearr[1].toUpperCase()} FILE` 
+       }
+       item.appendChild(hero)
+
+       let descriptions = document.createElement('div')
+       descriptions.classList.add('item-descriptions')
+       descriptions.id = `description${descriptionsNumber}`
+       descriptionsNumber++
+
+       const title = document.createElement('h3')
+       title.classList.add('item-title')
+       title.innerHTML = data.files[i].name
+       title.id = `item-title${titleNumber}`
+       titleNumber++
+       title.addEventListener('click', (e)=>{ 
+        const titlechange = document.createElement('input')
+        titlechange.classList.add('item-title')
+        titlechange.value = title.innerHTML
+        titlechange.id = `item-title${titleNumber}`
+        titlechange.style.height = '23px'
+        titlechange.addEventListener('keypress', (e)=>{
+            if(e.keyCode === 13){
+                fetch(`https://abox-project.xyz/apipost/updatefilename/${url1}/${data.files[i].folder}`, {method: 'POST', body: JSON.stringify({old: data.files[i].name, new: titlechange.value})})
+                .then(response=>{
+                    title.innerHTML = titlechange.value
+                    e.target.parentNode.replaceChild(title, titlechange) 
+                    item.style.height = `250px`
+                })
+                .catch(error=>console.log(error))
+            }
+        })
+        e.target.parentNode.replaceChild(titlechange, title) 
+        if(window.innerWidth <= 740){
+            item.style.height = `255px`
+        }
+        else{
+            item.style.height = `270px`
+        }
+       })
+       descriptions.appendChild(title)
+
+       const stamp = document.createElement('p')
+       stamp.classList.add('timestamp')
+       const date = data.files[i].mtime.substring(0,10).split(' ')
+       let shared_with;
+        if(data.files[i].shared_with === null){
+            shared_with = 'Not Shared';
+        }
+        else{
+               shared_with = data.files[i].shared_with;
+        }
+       if(data.files[i].folder === 'uploaded'){
+        stamp.innerHTML = `<div>Upload Date: ${date[0]}-${date[1]}-${date[2]}</div> <div>You Shared With: ${shared_with}</div><div style="opacity: 0;">u</div>`
+       }
+       else{
+        stamp.innerHTML = `<div>Shared Date: ${date[0]}-${date[1]}-${date[2]}</div> <div>Shared By: ${data.files[i].shared_by}</div><div style="opacity: 0;">Shared With: ${shared_with}</div>`
+        if(data.files[i].shared_with !== null){
+            stamp.children[2].style.opacity = '1'
+        }
+       }
+       descriptions.appendChild(stamp)
+
+       const trash = document.createElement('i')
+       trash.className = 'fa fa-trash'
+       trash.id = 'item-delete'
+       descriptions.appendChild(trash)
+       trash.addEventListener('click', (e)=>{ 
+        fetch(`https://abox-project.xyz/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+            method: 'POST'
+        })
+        .then(data=>{
+            e.target.parentNode.parentNode.remove()
+            if(document.querySelector('#items-container').children.length === 0) {
+                document.querySelector('#items-container').remove()
+                const emptyMessage = document.createElement('p')
+                emptyMessage.id = 'emptyMessage'
+                emptyMessage.innerHTML = 'You have no items in your ABox'
+                document.querySelector('#main').appendChild(emptyMessage) 
+                document.querySelector('#main').style.display = 'flex' 
+                document.querySelector('#main').style['justify-content'] = 'center' 
+                document.querySelector('#main').style['align-items'] = 'center'  
+                document.querySelector('#main').style.backgroundColor = 'transparent'  
+            }
+        })
+        .catch(error=>console.log(error))
+       })
+
+       const share = document.createElement('i')
+       share.className = 'fa fa-share' 
+       share.id = `item-share`
+       shareNumber++
+       share.addEventListener('click', (e)=>{   
+
+        share.parentNode.parentNode.style.pointerEvents = 'none'
+   
+        const h = window.innerHeight;
+        const i = h/100; 
+        const w = window.innerWidth;
+        const i2 = w/100; 
+
+        let m = document.createElement('div')
+        m.className = 'modal' 
+        m.id = `modal${modalNumber}`
+        modalNumber++
+        m.style.marginTop = `${e.target.offsetTop + 5}px`
+        m.style.marginLeft = `${e.target.offsetLeft - 210}px` 
+
+
+        let close = document.createElement('span')
+        close.className = 'modal-close'
+        close.addEventListener('click', (e)=>{
+           if(e.target.parentNode.parentNode.parentNode.children === 0){
+            e.target.parentNode.parentNode.remove()
+            document.querySelector('#modal-container').style.display = 'none';
+            share.parentNode.parentNode.style.pointerEvents = 'all'
+           }
+           else{
+               e.target.parentNode.parentNode.remove()
+               share.parentNode.parentNode.style.pointerEvents = 'all'
+           }
+           clearTimeout(timer1, timer2)
+        })
+        m.appendChild(close)
+
+        let closeIcon = document.createElement('i')
+        closeIcon.className = 'fa fa-close'
+        close.append(closeIcon)
+
+        let title = document.createElement('p')
+        title.className = 'modal-title'
+        title.innerHTML = 'Enter Recipiant Email'
+        m.appendChild(title)
+
+        let message = document.createElement('p')
+        message.className = 'modal-message' 
+        message.style.color = 'red'
+        message.style.fontSize = '10px'
+        message.style.paddingTop = '5px'
+
+        let modalInput = document.createElement('input')
+        modalInput.className = 'modal-input'
+        modalInput.placeholder = 'Email'
+        modalInput.addEventListener('click', (e)=>{
+            message.style.display = 'none'
+        })
+        modalInput.addEventListener('change', (e)=>{  
+            if(modalInput.value !== data.user.email){
+                fetch(`https://abox-project.xyz/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
+                .then(response=>{return response.json()})
+                .then(json=>{
+                message.style.display = 'block'
+                console.log(json)  
+
+               if(stamp.children[2].innerHTML !== `u`){
+                  stamp.children[2].style.opacity = '1'
+                  if(json.message[0] === 'shared'){
+                            stamp.children[2].innerHTML = `You Shared With: ${json.with}` 
+                            message.style.color = 'green'
+                            message.style.opacity ='1'
+                            message.innerHTML = json.message
+                            console.log(message.innerHTML)
+                            message.style.display = 'block' 
+                            let timer1 = setTimeout(()=>{
+                                if(e.target.parentNode.parentNode.parentNode.children === 0){
+                                    e.target.parentNode.parentNode.remove()
+                                    document.querySelector('#modal-container').style.display = 'none';
+                                    share.parentNode.parentNode.style.pointerEvents = 'all'
+                                }
+                               else{
+                                   e.target.parentNode.parentNode.remove()
+                                   share.parentNode.parentNode.style.pointerEvents = 'all'
+                                }}
+                                 , 5000)
+                  }
+                  else{
+                    message.innerHTML = json.message 
+                  }
+               } 
+
+               else{
+                    if(json.message !== 'user does not exist' && json.message !== 'something went wrong'){ 
+                        if(json.with !== undefined){
+                            stamp.children[1].innerHTML = `You Shared With: ${json.with}`
+                            message.style.color = 'green'
+                            message.style.opacity ='1'
+                            message.innerHTML = json.message 
+                            let timer2 = setTimeout(()=>{
+                                if(e.target.parentNode.parentNode.parentNode.children === 0){
+                                    e.target.parentNode.parentNode.remove()
+                                    document.querySelector('#modal-container').style.display = 'none';
+                                    share.parentNode.parentNode.style.pointerEvents = 'all'
+                                }
+                               else{
+                                   e.target.parentNode.parentNode.remove()
+                                   share.parentNode.parentNode.style.pointerEvents = 'all'
+                                }}
+                                 , 5000)                       }
+                    }
+                    else{
+                        message.innerHTML = json.message 
+                    }
+               } 
+            })
+            .catch(error=>console.log(error))
+            }
+            else{
+                message.style.color = 'red'
+                message.style.opacity ='1'
+                message.style.display = 'block' 
+                message.innerHTML = 'you cannot share files with yourself'
+            }
+        })
+        m.appendChild(modalInput)
+
+        let modalIContainer = document.createElement('label') 
+        modalIContainer.className = 'modal-icon-container'
+        m.appendChild(modalIContainer)
+
+        let modalI = document.createElement('i')
+        modalI.className = 'fa fa-share'
+        modalI.id = 'modal-input-icon'
+        modalIContainer.appendChild(modalI)
+
+        m.appendChild(message)
+        document.querySelector('#modal-container').appendChild(m) 
+        document.querySelector('#modal-container').style.display = 'block'  
+
+       })
+       descriptions.appendChild(share)
+
+       const download = document.createElement('i')
+       download.className = 'fa fa-download' 
+       download.id = 'item-download'
+       descriptions.appendChild(download)
+       download.addEventListener('click', (e)=>{
+           window.location.assign(`https://abox-project.xyz/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+       })
+
+       item.appendChild(descriptions)
+
+       document.querySelector('#items-container').appendChild(item)
+    }
+
+    while(document.querySelector('#items-container').children.length === 0) {
+        document.querySelector('#items-container').remove()
+        const emptyMessage = document.createElement('p')
+        emptyMessage.id = 'emptyMessage'
+        emptyMessage.innerHTML = 'You have no items in your ABox'
+        document.querySelector('#main').appendChild(emptyMessage) 
+        document.querySelector('#main').style.display = 'flex' 
+        document.querySelector('#main').style['justify-content'] = 'center' 
+        document.querySelector('#main').style['align-items'] = 'center'  
+        document.querySelector('#main').style.backgroundColor = 'transparent' 
+    }
+
+})
+.catch(error=>console.log(error)) 
+
+
+function signout(){
+
+    const url = window.location.href.split('/') 
+
+    fetch('https://abox-project.xyz/apipost/signout', {
+        method: "POST",
+        body: JSON.stringify({user: `${url[6].substring(2)}`})
+    })
+    .then(response=>{
+        window.location = 'https://abox-project.xyz/frontend/signinPage/html/signin.html'
+    })
+    .catch(error=>console.log(error))
+
+}
+
+document.querySelector('#uploadfield').addEventListener('change', (e)=>{
+    e.preventDefault()  
+    var input = document.querySelector('#uploadfield')
+
+   var data = new FormData() 
+   data.append('fileuploaded', input.files[0]) 
+   const url = window.location.href.split('/') 
+
+   fetch(`https://abox-project.xyz/apipost/fileupload/?${url[6].substring(2)}`, {
+       method: 'POST',
+       body: data 
+   })
+   .then(response=>response.json())
+   .then(json=>{
+
+      if(json.message !== 'something went wrong'){
+
+        if(document.querySelector('#emptyMessage') !== null) {
+           document.querySelector('#emptyMessage').remove()
+           document.querySelector('#main').style.display = 'block'  
+           document.querySelector('#main').style.height = '' 
+           document.querySelector('#main').style.width = ''
+           document.querySelector('#main').style['justify-content'] = ''
+           document.querySelector('#main').style['align-items'] = ''
+           const container = document.createElement('div')
+           container.id = 'items-container'
+           document.querySelector('#main').appendChild(container)
+        } 
+
+        else{}
+       
+       const container = document.createElement('div')
+       container.id = 'items-container'
+       document.querySelector('#main').appendChild(container)
+
+       let item = document.createElement('div')
+       item.classList.add('items')
+       item.classList.add('uploaded') 
+       item.id = `item${itemsNumber}`
+       itemsNumber++
+
+       let hero = document.createElement('div')
+       hero.classList.add('item-heros')
+       const typearr= json.file.type.split('/') 
+       if(typearr[0] === 'image'){ 
+           fetch(`https://abox-project.xyz/apiget/file/${url1}/uploaded/${json.file.name}`)
+           .then(response=>{
+                 response.blob()
+                 .then(imageblob=>{
+                   hero.style.backgroundImage = `url('${window.URL.createObjectURL(imageblob)}')`
+                   hero.style.backgroundPosition = 'center'
+                   hero.style.backgroundSize = 'cover'
+                   hero.innerHTML = ''
+                 }).catch(error=>console.log(error))
+                }
+            )
+           .catch()
+       }
+       else if(json.file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+            hero.innerHTML = `MICROSOFT OFFICE FILE` 
+       }
+       else if(json.file.length >= 50 && typearr !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+            hero.innerHTML = `${typearr[0].toUpperCase()} FILE` 
+       }
+       else{
+           hero.innerHTML = `${typearr[1].toUpperCase()} FILE` 
+       }
+       item.appendChild(hero)
+
+       let descriptions = document.createElement('div')
+       descriptions.classList.add('item-descriptions')
+       descriptions.id = `description${descriptionsNumber}`
+       descriptionsNumber++
+
+       const title = document.createElement('h3')
+       title.classList.add('item-title')
+       title.innerHTML = json.file.name
+       title.id = `item-title${titleNumber}`
+       titleNumber++
+       title.addEventListener('click', (e)=>{
+        const titlechange = document.createElement('input')
+        titlechange.classList.add('item-title')
+        titlechange.value = json.file.name
+        titlechange.id = `item-title${titleNumber}`
+        titlechange.style.height = '23px'
+        titlechange.addEventListener('keypress', (e)=>{
+            if(e.keyCode === 13){
+                fetch(`https://abox-project.xyz/apipost/updatefilename/${url1}/${json.message}`,{method: 'POST', body: JSON.stringify({old: json.file.name, new: titlechange.value})})
+                .then(response=>{
+                    title.innerHTML = titlechange.value
+                    e.target.parentNode.replaceChild(title, titlechange)
+                    item.style.height = `250px`
+                })
+                .catch(error=>console.log(error))
+            }
+        })
+        e.target.parentNode.replaceChild(titlechange, title)
+        if(window.innerWidth <= 740){
+            item.style.height = `255px`
+        }
+        else{
+            item.style.height = `270px`
+        }
+       })
+
+       descriptions.appendChild(title)
+
+       
+
+       const stamp = document.createElement('p')
+       stamp.classList.add('timestamp')
+       const date = json.file.mtime.substring(0,10).split('-')
+       let shared_with;
+        if(json.shared_with === null){
+            shared_with = 'Not Shared';
+        }
+        else{
+               shared_with = json.shared_with;
+        } 
+        stamp.innerHTML = `<div>Upload Date: ${date[0]}-${date[1]}-${date[2]}</div> <div>You Shared With: ${shared_with}</div><div style="opacity: 0;">u</div>`
+
+        if(json.shared_with !== null){
+            stamp.children[2].style.opacity = '1'
+        }
+       descriptions.appendChild(stamp)
+
+       const trash = document.createElement('i')
+       trash.className = 'fa fa-trash'
+       trash.id = 'item-delete'
+       descriptions.appendChild(trash)
+       trash.addEventListener('click', (e)=>{ 
+        fetch(`https://abox-project.xyz/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+            method: 'POST'
+        })
+        .then(data=>{
+            e.target.parentNode.parentNode.remove()
+            if(document.querySelector('#items-container').children.length === 0) {
+                document.querySelector('#items-container').remove()
+                const emptyMessage = document.createElement('p')
+                emptyMessage.id = 'emptyMessage'
+                emptyMessage.innerHTML = 'You have no items in your ABox'
+                document.querySelector('#main').appendChild(emptyMessage) 
+                document.querySelector('#main').style.display = 'flex' 
+                document.querySelector('#main').style['justify-content'] = 'center' 
+                document.querySelector('#main').style['align-items'] = 'center'  
+                document.querySelector('#main').style.backgroundColor = 'transparent' 
+            }
+        })
+        .catch(error=>console.log(error))
+       })
+
+       const share = document.createElement('i')
+       share.className = 'fa fa-share'
+       share.id = `item-share`
+       shareNumber++
+       share.addEventListener('click', (e)=>{   
+
+share.parentNode.parentNode.style.pointerEvents = 'none'
+
+const h = window.innerHeight;
+const i = h/100; 
+const w = window.innerWidth;
+const i2 = w/100; 
+
+let m = document.createElement('div')
+m.className = 'modal' 
+m.id = `modal${modalNumber}`
+modalNumber++
+m.style.marginTop = `${e.target.offsetTop + 5}px`
+m.style.marginLeft = `${e.target.offsetLeft - 210}px` 
+
+
+let close = document.createElement('span')
+close.className = 'modal-close'
+close.addEventListener('click', (e)=>{
+   if(e.target.parentNode.parentNode.parentNode.children === 0){
+    e.target.parentNode.parentNode.remove()
+    document.querySelector('#modal-container').style.display = 'none';
+    share.parentNode.parentNode.style.pointerEvents = 'all'
+   }
+   else{
+       e.target.parentNode.parentNode.remove()
+       share.parentNode.parentNode.style.pointerEvents = 'all'
+   }
+   clearTimeout(timer1, timer2)
+})
+m.appendChild(close)
+
+let closeIcon = document.createElement('i')
+closeIcon.className = 'fa fa-close'
+close.append(closeIcon)
+
+let title = document.createElement('p')
+title.className = 'modal-title'
+title.innerHTML = 'Enter Recipiant Email'
+m.appendChild(title)
+
+let message = document.createElement('p')
+message.className = 'modal-message' 
+message.style.color = 'red'
+message.style.fontSize = '10px'
+message.style.paddingTop = '5px'
+
+let modalInput = document.createElement('input')
+modalInput.className = 'modal-input'
+modalInput.placeholder = 'Email'
+modalInput.addEventListener('click', (e)=>{
+    message.style.display = 'none'
+})
+modalInput.addEventListener('change', (e)=>{ 
+    if(modalInput.value !== userinfo.user.email){ 
+        fetch(`https://abox-project.xyz/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
+    .then(response=>{return response.json()})
+    .then(json=>{
+        message.style.display = 'block'  
+
+       if(stamp.children[2].innerHTML !== `u`){
+          stamp.children[2].style.opacity = '1'
+          if(json.message !== 'user does not exist' && json.message !== 'something went wrong. try again later'){
+                    stamp.children[2].innerHTML = `You Shared With: ${json.with}` 
+                    message.style.color = 'green'
+                    message.style.opacity ='1'
+                    message.innerHTML = json.message 
+                    message.style.display = 'block'
+                    let timer1 = setTimeout(()=>{
+                        if(e.target.parentNode.parentNode.parentNode.children === 0){
+                            e.target.parentNode.parentNode.remove()
+                            document.querySelector('#modal-container').style.display = 'none';
+                            share.parentNode.parentNode.style.pointerEvents = 'all'
+                        }
+                       else{
+                           e.target.parentNode.parentNode.remove()
+                           share.parentNode.parentNode.style.pointerEvents = 'all'
+                        }}
+                         , 5000)
+          }
+          else{
+            message.innerHTML = json.message 
+          }
+       } 
+
+       else{
+            if(json.message !== 'user does not exist' && json.message !== 'something went wrong'){ 
+                if(json.with !== undefined){
+                    stamp.children[1].innerHTML = `You Shared With: ${json.with}`
+                    message.style.color = 'green'
+                    message.style.opacity ='1'
+                    message.innerHTML = json.message 
+                    let timer2 = setTimeout(()=>{
+                        if(e.target.parentNode.parentNode.parentNode.children === 0){
+                            e.target.parentNode.parentNode.remove()
+                            document.querySelector('#modal-container').style.display = 'none';
+                            share.parentNode.parentNode.style.pointerEvents = 'all'
+                        }
+                       else{
+                           e.target.parentNode.parentNode.remove()
+                           share.parentNode.parentNode.style.pointerEvents = 'all'
+                        }}
+                         , 5000)                       }
+            }
+            else{
+                message.innerHTML = json.message 
+            }
+       } 
+    })
+    .catch(error=>console.log(error))
+    }
+    else{
+                message.style.color = 'red'
+                message.style.opacity ='1'
+                message.style.display = 'block' 
+                message.innerHTML = 'you cannot share files with yourself'
+            }
+})
+m.appendChild(modalInput)
+
+let modalIContainer = document.createElement('label') 
+modalIContainer.className = 'modal-icon-container'
+m.appendChild(modalIContainer)
+
+let modalI = document.createElement('i')
+modalI.className = 'fa fa-share'
+modalI.id = 'modal-input-icon'
+modalIContainer.appendChild(modalI)
+
+m.appendChild(message)
+document.querySelector('#modal-container').appendChild(m) 
+document.querySelector('#modal-container').style.display = 'block'  
+
+})
+       descriptions.appendChild(share)
+
+       const download = document.createElement('i')
+       download.className = 'fa fa-download'
+       download.id = 'item-download'
+       descriptions.appendChild(download)
+       download.addEventListener('click', (e)=>{
+           window.location.assign(`https://abox-project.xyz/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+       })
+
+       item.appendChild(descriptions)
+
+       document.querySelector('#items-container').appendChild(item)
+
+      } 
+
+   })
+   .catch(error=>console.log(error)) 
+
+  })  
+
+ function menuClose(){
+    document.querySelector('#menu-container').style.display = 'none'
+ }
+
+
+  document.querySelector('#uploadfield2').addEventListener('change', (e)=>{
+    e.preventDefault()  
+    var input = document.querySelector('#uploadfield2') 
+
+   var data = new FormData() 
+   data.append('profilepic', input.files[0]) 
+   const url = window.location.href.split('/') 
+
+  fetch(`https://abox-project.xyz/apipost/profilepic/?${url[6].substring(2)}`, {
+       method: 'POST',
+       body: data 
+   })
+   .then(response=>{ menuClose(); response.blob().then(blob=>{document.querySelector('#pic').style.backgroundImage = `url('${window.URL.createObjectURL(blob)}')`;}).catch(error=>console.log(error))})
+   .catch(error=>console.log(error))
+  }) 
+  
+
+ 
+ document.querySelector('.todo-input').addEventListener('input', (e)=>{
+  
+    const numberOfItems = document.querySelector('#items-container').children.length - 1
+    if(document.querySelector('.todo-input').value.toLowerCase() !== ''){
+  
+     for(i=0; i <= numberOfItems; i++){
+     if(document.querySelector('.todo-input').value.toLowerCase() !== document.querySelector('#items-container').children[i].children[1].children[0].innerHTML.substring(0, document.querySelector('.todo-input').value.length)){
+        document.querySelector('#items-container').children[i].style.display = 'none' 
+     }
+     if(document.querySelector('.todo-input').value.toLowerCase() === document.querySelector('#items-container').children[i].children[1].children[0].innerHTML.substring(0, document.querySelector('.todo-input').value.length)){
+        document.querySelector('#items-container').children[i].style.display = 'inline-block'  
+     }
+
+     }
+    }
+
+    else{
+        for(i=0; i <= numberOfItems; i++){
+            document.querySelector('#items-container').children[i].style.display = 'inline-block'  
+     }
+    }
+ })
+
+ document.querySelector('#menu-icon').addEventListener('click', (e)=>{
+    if(document.querySelector('#menu-container').style.display === 'block'){
+        document.querySelector('#menu-container').style.display = 'none';
+    }
+    else{
+        document.querySelector('#menu-container').style.display = 'block';
+    }
+ })
+
+ document.querySelector('#menu-list-item3').addEventListener('click', (e)=>{
+    document.querySelector('#delete-container').style.display = 'flex'
+    menuClose()
+ })
+
+ document.querySelector('#no').addEventListener('click', (e)=>{
+    document.querySelector('#delete-container').style.display = 'none'
+ })
+
+ document.querySelector('#yes').addEventListener('click', (e)=>{
+    fetch(`https://abox-project.xyz/apipost/deleteaccount/?${url1}`, {
+       method: 'POST'
+   })
+   .then(response=>{response.json().then(json=>window.location = `${json.link}`).catch(error=>console.log(error))})
+   .catch(error=>console.log(error)) 
+  
+ })
+
+ document.querySelector('#menu-list-item1').addEventListener('click', (e)=>{
+    document.querySelector('#details-container').style.display = 'flex'
+    menuClose()
+ })
+
+ document.querySelector('#-password-modal-close').addEventListener('click', (e)=>{
+    document.querySelector('#details-container').style.display = 'none'
+ })
+
+ document.querySelector('#details-modal-close').addEventListener('click', (e)=>{
+    userinfo.password = ''
+    document.querySelector('#details-container').style.display = 'none'
+    document.querySelector('#details-modal').style.display = 'none'  
+    for(i = 2; i <= 4; i++){
+        if(document.querySelector('#details-modal').children[i].children[2] !== undefined){  
+            document.querySelector('#details-modal').children[i].children[2].remove()
+        }
+    }
+    document.querySelector('#password-modal').style.display = 'block'
+ })
+
+ document.querySelector('#password-modal input').addEventListener('change', (e)=>{
+    fetch(`https://abox-project.xyz/apipost/checkpassword`, {method: 'POST', body: JSON.stringify({userid: url1, password: document.querySelector('#password-modal input').value})})
+    .then(data=>{
+        return data.json()
+    })
+     .then(json=>{
+        userinfo.user.password = document.querySelector('#password-modal input').value
+        if(json.message){
+        document.querySelector('#password-modal').style.display = 'none' 
+
+        const name = document.createElement('p')
+        name.id = 'name'
+        name.innerHTML = userinfo.user.name
+        name.style.display = 'block'
+        document.querySelector('#name-box').appendChild(name)
+
+        const email = document.createElement('p')
+        email.id = 'email'
+        email.innerHTML = userinfo.user.email
+        email.style.display = 'block'
+        document.querySelector('#email-box').appendChild(email)
+
+        const password = document.createElement('p')
+        password.id = 'password'
+        password.innerHTML = userinfo.user.password
+        password.style.display = 'block'
+        document.querySelector('#password-box').appendChild(password) 
+
+        document.querySelectorAll('.details-button').forEach((item)=>{
+            item.addEventListener('click', (e)=>{ 
+
+               if(e.target.innerHTML === 'Edit'){
+                e.target.innerHTML = 'Save'
+                const t = e.target.parentNode.parentNode.children[2].id 
+
+                const n = document.createElement('input')
+                n.id = t 
+                n.value = e.target.parentNode.parentNode.children[2].innerHTML || userinfo.user[`${t}`]
+                n.style.display = 'block'
+                n.style.width = '70%'  
+                n.addEventListener('click', (e)=>{
+                      e.target.parentNode.children[3].remove()
+                })
+                e.target.parentNode.parentNode.style.height = '90px' 
+                e.target.parentNode.parentNode.children[2].remove()
+                document.querySelector(`#${t}-box`).appendChild(n)
+               }
+               else{
+                const t = e.target.parentNode.parentNode.children[2].id
+                const m = document.createElement('p')
+                m.innerHTML = e.target.parentNode.parentNode.children[2].value || userinfo.user[`${t}`]
+                m.id = t
+                m.style.display = 'block'   
+
+                fetch(`https://abox-project.xyz/apipost/updatedetails/?${url1}`, {method: 'POST', body: JSON.stringify({field: m.id.toLowerCase(), value: m.innerHTML.toLowerCase()})})
+                .then(data=>{
+                    return data.json()
+                })
+                .then(json=>{ 
+                    if(json.error !== 'error: duplicate key value violates unique constraint \"users_email_key\"'){
+                        e.target.innerHTML = 'Edit'
+                        e.target.parentNode.parentNode.style.height = '80px' 
+                        e.target.parentNode.parentNode.children[2].remove()
+                        document.querySelector(`#${t}-box`).appendChild(m) 
+                    }
+                    else{ 
+                        if(e.target.parentNode.parentNode.children[3] !== undefined){
+                            e.target.parentNode.parentNode.children[3].remove()
+                        }
+                        const s = document.createElement('p') 
+                        s.innerHTML = 'that email is already taken'
+                        s.style.display = 'block'   
+                        s.style.color = 'red'
+                        s.style.marginTop = '0.5rem'
+                        e.target.parentNode.parentNode.style.height = '120px'
+                        document.querySelector(`#${t}-box`).appendChild(s) 
+                    }
+
+                })
+                .catch(error=>console.log(error))
+               }
+        })
+        })
+
+        document.querySelector('#details-modal').style.display = 'block'
+        document.querySelector('#password-modal input').value = ''
+     }
+     else{
+        document.querySelector('#password-modal input').style.marginBottom = '1rem'
+         const message = document.createElement('p')
+         message.innerHTML = 'Password is Incorrect'
+         message.style.color = 'red'
+         message.style.fontSize = '0.7rem' 
+         message.style.textAlign = 'center'
+         message.style.marginBottom = '1.5rem'
+         document.querySelector('#password-modal').appendChild(message)
+         document.querySelector('#password-modal input').addEventListener('click', (e)=>{
+             message.style.display = 'none'
+         })
+     }
+     })
+     .catch()
+ })
+    </script>
+</body>
+</html>
