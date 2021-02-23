@@ -183,13 +183,13 @@ let num = 1;
                         port: 465,
                         secure: true,
                         auth: {
-                            user: 'aboxreset@gmail.com',
-                            pass: 'aboxproject123?'
+                            user: 'email',
+                            pass: 'password'
                         }
                     })
 
                     const mailObject = {
-                        from: '<abox@gmail.com>',
+                        from: '<email>',
                         to: `${JSON.parse(useremail).email}`,
                         subject: 'Reset Password',
                         text: `hello, ${data.rows[0].name}\n\nclick on the link below to reset your password:\n\nhttps://abox-project.xyz/frontend/forgottenPage/html/index.html/?${data.rows[0].id}`
