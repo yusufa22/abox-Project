@@ -71,3 +71,10 @@ a:hover{
     margin: 0;
     box-sizing: border-box;
 }
+
+.message{
+    width: fit-content;
+    margin-left: 17vw;
+    margin-right: 17vw;
+    text-align: center;
+}
