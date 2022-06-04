@@ -301,8 +301,12 @@ header{
     border: solid rgb(236, 234, 234) 1px; 
     height: 33.5px;  
     padding-left: 8px;
+<<<<<<< HEAD
     background-color: white;
     outline: none;  
+=======
+    background-color: white;  
+>>>>>>> a5ab2df (added message to homepage)
 }
 
 .modal-icon-container{
@@ -469,7 +473,10 @@ header{
     display: inline-block;
     margin: 1rem 1rem 1.5rem 1rem;
     padding: 0.5rem;
+<<<<<<< HEAD
     outline: none;
+=======
+>>>>>>> a5ab2df (added message to homepage)
 }
 
 #-password-modal-close{
@@ -642,7 +649,11 @@ header{
     align-items: center;
     justify-content: right;
     width: fit-content;
+<<<<<<< HEAD
     float: right;
+=======
+    margin-right: 4px;   
+>>>>>>> a5ab2df (added message to homepage)
 }
 
 #username{ 
@@ -850,8 +861,12 @@ header{
     border: solid rgb(236, 234, 234) 1px; 
     height: 33.5px;  
     padding-left: 8px;
+<<<<<<< HEAD
     background-color: rgb(236, 234, 234);
     outline: none;  
+=======
+    background-color: rgb(236, 234, 234);  
+>>>>>>> a5ab2df (added message to homepage)
 }
 
 .modal-icon-container{
@@ -1024,7 +1039,10 @@ header{
     display: inline-block;
     margin: 1rem 1rem 1.5rem 1rem;
     padding: 0.5rem;
+<<<<<<< HEAD
     outline: none;
+=======
+>>>>>>> a5ab2df (added message to homepage)
 }
 
 #-password-modal-close{
@@ -1090,6 +1108,16 @@ header{
     margin-top: 1rem;
     transition: 0.2s;
 }
+<<<<<<< HEAD
+=======
+
+.details-button:hover{
+    background-color: black;
+    color: white;
+    border: solid rgb(0, 0, 0) 1px;
+}
+
+>>>>>>> a5ab2df (added message to homepage)
 }
     </style>
 
@@ -1225,7 +1253,11 @@ let userinfo;
 const url = window.location.href.split('/')
 const url1 = url[6].substring(2)
 
+<<<<<<< HEAD
 fetch(`https://abox-project.xyz/apiget/profilepic/${url1}`)
+=======
+fetch(`http://192.168.1.65:8081/apiget/profilepic/${url1}`)
+>>>>>>> a5ab2df (added message to homepage)
 .then(response=>{
     response.blob()
     .then(blob=>{
@@ -1241,7 +1273,11 @@ fetch(`https://abox-project.xyz/apiget/profilepic/${url1}`)
 })
 .catch(error=>console.log(error))
 
+<<<<<<< HEAD
 fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
+=======
+fetch(`http://192.168.1.65:8081/apiget/userinfo/${url1}`)
+>>>>>>> a5ab2df (added message to homepage)
 .then((response)=>{ 
      return response.json();
 }) 
@@ -1262,7 +1298,11 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
        hero.classList.add('item-heros')
        const typearr= data.files[i].type.split('/')    
        if(typearr[0] === 'image'){
+<<<<<<< HEAD
            fetch(`https://abox-project.xyz/apiget/file/${url1}/${data.files[i].folder}/${data.files[i].name}`)
+=======
+           fetch(`http://192.168.1.65:8081/apiget/file/${url1}/${data.files[i].folder}/${data.files[i].name}`)
+>>>>>>> a5ab2df (added message to homepage)
            .then(response=>{
                  response.blob()
                  .then(imageblob=>{
@@ -1304,7 +1344,11 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
         titlechange.style.height = '23px'
         titlechange.addEventListener('keypress', (e)=>{
             if(e.keyCode === 13){
+<<<<<<< HEAD
                 fetch(`https://abox-project.xyz/apipost/updatefilename/${url1}/${data.files[i].folder}`, {method: 'POST', body: JSON.stringify({old: data.files[i].name, new: titlechange.value})})
+=======
+                fetch(`http://192.168.1.65:8081/apipost/updatefilename/${url1}/${data.files[i].folder}`, {method: 'POST', body: JSON.stringify({old: data.files[i].name, new: titlechange.value})})
+>>>>>>> a5ab2df (added message to homepage)
                 .then(response=>{
                     title.innerHTML = titlechange.value
                     e.target.parentNode.replaceChild(title, titlechange) 
@@ -1349,7 +1393,11 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
        trash.id = 'item-delete'
        descriptions.appendChild(trash)
        trash.addEventListener('click', (e)=>{ 
+<<<<<<< HEAD
         fetch(`https://abox-project.xyz/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+=======
+        fetch(`http://192.168.1.65:8081/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+>>>>>>> a5ab2df (added message to homepage)
             method: 'POST'
         })
         .then(data=>{
@@ -1429,6 +1477,7 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
         })
         modalInput.addEventListener('change', (e)=>{  
             if(modalInput.value !== data.user.email){
+<<<<<<< HEAD
                 fetch(`https://abox-project.xyz/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
                 .then(response=>{return response.json()})
                 .then(json=>{
@@ -1444,6 +1493,20 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
                             message.innerHTML = json.message
                             console.log(message.innerHTML)
                             message.style.display = 'block' 
+=======
+                fetch(`http://192.168.1.65:8081/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
+            .then(response=>{return response.json()})
+            .then(json=>{
+                message.style.display = 'block'  
+
+               if(stamp.children[2].innerHTML !== `u`){
+                  stamp.children[2].style.opacity = '1'
+                  if(json.message !== 'user does not exist' && json.message !== 'something went wrong. try again later'){
+                            stamp.children[2].innerHTML = `You Shared With: ${json.with}` 
+                            message.style.color = 'green'
+                            message.style.opacity ='1'
+                            message.innerHTML = json.message 
+>>>>>>> a5ab2df (added message to homepage)
                             let timer1 = setTimeout(()=>{
                                 if(e.target.parentNode.parentNode.parentNode.children === 0){
                                     e.target.parentNode.parentNode.remove()
@@ -1517,7 +1580,11 @@ fetch(`https://abox-project.xyz/apiget/userinfo/${url1}`)
        download.id = 'item-download'
        descriptions.appendChild(download)
        download.addEventListener('click', (e)=>{
+<<<<<<< HEAD
            window.location.assign(`https://abox-project.xyz/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+=======
+           window.location.assign(`http://192.168.1.65:8081/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+>>>>>>> a5ab2df (added message to homepage)
        })
 
        item.appendChild(descriptions)
@@ -1545,12 +1612,20 @@ function signout(){
 
     const url = window.location.href.split('/') 
 
+<<<<<<< HEAD
     fetch('https://abox-project.xyz/apipost/signout', {
+=======
+    fetch('http://192.168.1.65:8081/apipost/signout', {
+>>>>>>> a5ab2df (added message to homepage)
         method: "POST",
         body: JSON.stringify({user: `${url[6].substring(2)}`})
     })
     .then(response=>{
+<<<<<<< HEAD
         window.location = 'https://abox-project.xyz/frontend/signinPage/html/signin.html'
+=======
+        window.location = 'http://192.168.1.65:8081/frontend/signinPage/html/signin.html'
+>>>>>>> a5ab2df (added message to homepage)
     })
     .catch(error=>console.log(error))
 
@@ -1564,7 +1639,11 @@ document.querySelector('#uploadfield').addEventListener('change', (e)=>{
    data.append('fileuploaded', input.files[0]) 
    const url = window.location.href.split('/') 
 
+<<<<<<< HEAD
    fetch(`https://abox-project.xyz/apipost/fileupload/?${url[6].substring(2)}`, {
+=======
+   fetch(`http://192.168.1.65:8081/apipost/fileupload/?${url[6].substring(2)}`, {
+>>>>>>> a5ab2df (added message to homepage)
        method: 'POST',
        body: data 
    })
@@ -1601,7 +1680,11 @@ document.querySelector('#uploadfield').addEventListener('change', (e)=>{
        hero.classList.add('item-heros')
        const typearr= json.file.type.split('/') 
        if(typearr[0] === 'image'){ 
+<<<<<<< HEAD
            fetch(`https://abox-project.xyz/apiget/file/${url1}/uploaded/${json.file.name}`)
+=======
+           fetch(`http://192.168.1.65:8081/apiget/file/${url1}/uploaded/${json.file.name}`)
+>>>>>>> a5ab2df (added message to homepage)
            .then(response=>{
                  response.blob()
                  .then(imageblob=>{
@@ -1635,6 +1718,7 @@ document.querySelector('#uploadfield').addEventListener('change', (e)=>{
        title.innerHTML = json.file.name
        title.id = `item-title${titleNumber}`
        titleNumber++
+<<<<<<< HEAD
        title.addEventListener('click', (e)=>{
         const titlechange = document.createElement('input')
         titlechange.classList.add('item-title')
@@ -1661,6 +1745,8 @@ document.querySelector('#uploadfield').addEventListener('change', (e)=>{
         }
        })
 
+=======
+>>>>>>> a5ab2df (added message to homepage)
        descriptions.appendChild(title)
 
        
@@ -1687,7 +1773,11 @@ document.querySelector('#uploadfield').addEventListener('change', (e)=>{
        trash.id = 'item-delete'
        descriptions.appendChild(trash)
        trash.addEventListener('click', (e)=>{ 
+<<<<<<< HEAD
         fetch(`https://abox-project.xyz/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+=======
+        fetch(`http://192.168.1.65:8081/apipost/deletefile/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`,{
+>>>>>>> a5ab2df (added message to homepage)
             method: 'POST'
         })
         .then(data=>{
@@ -1767,7 +1857,11 @@ modalInput.addEventListener('click', (e)=>{
 })
 modalInput.addEventListener('change', (e)=>{ 
     if(modalInput.value !== userinfo.user.email){ 
+<<<<<<< HEAD
         fetch(`https://abox-project.xyz/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
+=======
+        fetch(`http://192.168.1.65:8081/apipost/sharefile/${url1}/${share.parentNode.children[1].children[0].innerHTML.substring(0, 6)}/${share.parentNode.children[0].innerHTML}/${e.target.value}}`, {method: 'POST', body: ''})
+>>>>>>> a5ab2df (added message to homepage)
     .then(response=>{return response.json()})
     .then(json=>{
         message.style.display = 'block'  
@@ -1779,7 +1873,10 @@ modalInput.addEventListener('change', (e)=>{
                     message.style.color = 'green'
                     message.style.opacity ='1'
                     message.innerHTML = json.message 
+<<<<<<< HEAD
                     message.style.display = 'block'
+=======
+>>>>>>> a5ab2df (added message to homepage)
                     let timer1 = setTimeout(()=>{
                         if(e.target.parentNode.parentNode.parentNode.children === 0){
                             e.target.parentNode.parentNode.remove()
@@ -1853,7 +1950,11 @@ document.querySelector('#modal-container').style.display = 'block'
        download.id = 'item-download'
        descriptions.appendChild(download)
        download.addEventListener('click', (e)=>{
+<<<<<<< HEAD
            window.location.assign(`https://abox-project.xyz/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+=======
+           window.location.assign(`http://192.168.1.65:8081/apiget/file/${url1}/${e.target.parentNode.parentNode.classList[1]}/${e.target.parentNode.children[0].innerHTML}`)
+>>>>>>> a5ab2df (added message to homepage)
        })
 
        item.appendChild(descriptions)
@@ -1880,7 +1981,11 @@ document.querySelector('#modal-container').style.display = 'block'
    data.append('profilepic', input.files[0]) 
    const url = window.location.href.split('/') 
 
+<<<<<<< HEAD
   fetch(`https://abox-project.xyz/apipost/profilepic/?${url[6].substring(2)}`, {
+=======
+  fetch(`http://192.168.1.65:8081/apipost/profilepic/?${url[6].substring(2)}`, {
+>>>>>>> a5ab2df (added message to homepage)
        method: 'POST',
        body: data 
    })
@@ -1890,6 +1995,7 @@ document.querySelector('#modal-container').style.display = 'block'
   
 
  
+<<<<<<< HEAD
  document.querySelector('.todo-input').addEventListener('input', (e)=>{
   
     const numberOfItems = document.querySelector('#items-container').children.length - 1
@@ -1900,6 +2006,17 @@ document.querySelector('#modal-container').style.display = 'block'
         document.querySelector('#items-container').children[i].style.display = 'none' 
      }
      if(document.querySelector('.todo-input').value.toLowerCase() === document.querySelector('#items-container').children[i].children[1].children[0].innerHTML.substring(0, document.querySelector('.todo-input').value.length)){
+=======
+ document.querySelector('.todo-input').addEventListener('input', (e)=>{ 
+    const numberOfItems = document.querySelector('#items-container').children.length - 1
+    if(document.querySelector('.todo-input').value !== ''){
+
+     for(i=0; i <= numberOfItems; i++){
+     if(document.querySelector('.todo-input').value !== document.querySelector('#items-container').children[i].children[1].children[0].innerHTML.substring(0, document.querySelector('.todo-input').value.length)){
+        document.querySelector('#items-container').children[i].style.display = 'none' 
+     }
+     if(document.querySelector('.todo-input').value === document.querySelector('#items-container').children[i].children[1].children[0].innerHTML.substring(0, document.querySelector('.todo-input').value.length)){
+>>>>>>> a5ab2df (added message to homepage)
         document.querySelector('#items-container').children[i].style.display = 'inline-block'  
      }
 
@@ -1932,7 +2049,11 @@ document.querySelector('#modal-container').style.display = 'block'
  })
 
  document.querySelector('#yes').addEventListener('click', (e)=>{
+<<<<<<< HEAD
     fetch(`https://abox-project.xyz/apipost/deleteaccount/?${url1}`, {
+=======
+    fetch(`http://192.168.1.65:8081/apipost/deleteaccount/?${url1}`, {
+>>>>>>> a5ab2df (added message to homepage)
        method: 'POST'
    })
    .then(response=>{response.json().then(json=>window.location = `${json.link}`).catch(error=>console.log(error))})
@@ -1950,7 +2071,10 @@ document.querySelector('#modal-container').style.display = 'block'
  })
 
  document.querySelector('#details-modal-close').addEventListener('click', (e)=>{
+<<<<<<< HEAD
     userinfo.password = ''
+=======
+>>>>>>> a5ab2df (added message to homepage)
     document.querySelector('#details-container').style.display = 'none'
     document.querySelector('#details-modal').style.display = 'none'  
     for(i = 2; i <= 4; i++){
@@ -1962,12 +2086,19 @@ document.querySelector('#modal-container').style.display = 'block'
  })
 
  document.querySelector('#password-modal input').addEventListener('change', (e)=>{
+<<<<<<< HEAD
     fetch(`https://abox-project.xyz/apipost/checkpassword`, {method: 'POST', body: JSON.stringify({userid: url1, password: document.querySelector('#password-modal input').value})})
+=======
+    fetch(`http://192.168.1.65:8081/apipost/checkpassword`, {method: 'POST', body: JSON.stringify({userid: url1, password: document.querySelector('#password-modal input').value})})
+>>>>>>> a5ab2df (added message to homepage)
     .then(data=>{
         return data.json()
     })
      .then(json=>{
+<<<<<<< HEAD
         userinfo.user.password = document.querySelector('#password-modal input').value
+=======
+>>>>>>> a5ab2df (added message to homepage)
         if(json.message){
         document.querySelector('#password-modal').style.display = 'none' 
 
@@ -2015,7 +2146,11 @@ document.querySelector('#modal-container').style.display = 'block'
                 m.id = t
                 m.style.display = 'block'   
 
+<<<<<<< HEAD
                 fetch(`https://abox-project.xyz/apipost/updatedetails/?${url1}`, {method: 'POST', body: JSON.stringify({field: m.id.toLowerCase(), value: m.innerHTML.toLowerCase()})})
+=======
+                fetch(`http://192.168.1.65:8081/apipost/updatedetails/?${url1}`, {method: 'POST', body: JSON.stringify({field: m.id.toLowerCase(), value: m.innerHTML.toLowerCase()})})
+>>>>>>> a5ab2df (added message to homepage)
                 .then(data=>{
                     return data.json()
                 })
@@ -2066,4 +2201,8 @@ document.querySelector('#modal-container').style.display = 'block'
  })
     </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> a5ab2df (added message to homepage)

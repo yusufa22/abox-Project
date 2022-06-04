@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 const http = require('http');   
 const fsnormal = require('fs')
 const fs = require('fs/promises')
+=======
+const http = require('http'); 
+const fs = require('fs/promises');  
+const fsnormal = require('fs')
+>>>>>>> a5ab2df (added message to homepage)
 const os = require('os')
 const {Pool} = require('pg') 
 const mail = require('nodemailer')   
@@ -10,9 +16,15 @@ const bcrypt = require('bcrypt')
 process.env.UV_THREADPOOL_SIZE = os.cpus.length;
 
 const pool = new Pool({
+<<<<<<< HEAD
 user: 'ubuntu',
 password: 'password',
 database: 'aboxdatabase',
+=======
+user: 'ayub',
+password: 'AYUByusuf1',
+database: 'amazonprojectdatabase',
+>>>>>>> a5ab2df (added message to homepage)
 host: 'localhost',
 port: 5432
 })
@@ -42,7 +54,11 @@ let num = 1;
             }
             else{
                 response.writeHead(301, {
+<<<<<<< HEAD
                     'location': `https://abox-project.xyz/frontend/signinPage/html/signin.html`, 
+=======
+                    'location': `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`, 
+>>>>>>> a5ab2df (added message to homepage)
                 })
                 response.end()
             }
@@ -56,7 +72,11 @@ let num = 1;
 
     else if(request.url === '/' || url[1] === 'backend' || url[2] === 'userHomepage' && url[4] === undefined || url[2] === 'forgottenPage' && url[4] === 'index.html' && url[5] === undefined ){
         response.writeHead(301, {
+<<<<<<< HEAD
             'location': `https://abox-project.xyz/frontend/signinPage/html/signin.html`, 
+=======
+            'location': `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`, 
+>>>>>>> a5ab2df (added message to homepage)
         })
         response.end()
     }
@@ -82,7 +102,11 @@ let num = 1;
                                 })
                                 .then(data=>{
                                     response.write(JSON.stringify({
+<<<<<<< HEAD
                                         link: `https://abox-project.xyz/frontend/userHomepage/index.html/??${user.rows[0].id}/${Math.floor(Math.random() * 100000000000000000)}`,
+=======
+                                        link: `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/userHomepage/index.html/??${user.rows[0].id}/${Math.floor(Math.random() * 100000000000000000)}`,
+>>>>>>> a5ab2df (added message to homepage)
                                     }))
                                     response.end()
                                 })
@@ -122,7 +146,11 @@ let num = 1;
                     .then(data=>{
                         pool.query(`UPDATE users SET reset = 'DONT_ALLOW' WHERE email = '${JSON.parse(userRegistered).email}';`)
                     })
+<<<<<<< HEAD
                     .then(data=>{response.write(JSON.stringify({link: `https://abox-project.xyz/frontend/signinPage/html/signin.html`})); response.end()})
+=======
+                    .then(data=>{response.write(JSON.stringify({link: `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`})); response.end()})
+>>>>>>> a5ab2df (added message to homepage)
                     .catch(error=>{
                             response.write(JSON.stringify({error: `${error}`})); response.end(); 
                             console.log(error)
@@ -138,7 +166,11 @@ let num = 1;
             request.on('end', ()=>{
                 pool.query(`UPDATE users SET status = 'SIGNED_OUT' WHERE id = ${JSON.parse(userToSignOut).user};`)
                 .then(data=>{
+<<<<<<< HEAD
                     response.write(JSON.stringify({link: `https://abox-project.xyz/frontend/signinPage/html/signin.html`}))
+=======
+                    response.write(JSON.stringify({link: `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`}))
+>>>>>>> a5ab2df (added message to homepage)
                     response.end()
                 })
                 .catch(error=>{response.write(JSON.stringify({message: 'something went wrong', error: `${error}`})); response.end(); })
@@ -157,7 +189,11 @@ let num = 1;
                             return pool.query(`UPDATE users SET password = '${hash}' WHERE id = '${JSON.parse(userToReset).dbid}';`)
                         })   
                         .then(data=>{pool.query(`UPDATE users SET reset = 'DONT_ALLOW' WHERE id = '${JSON.parse(userToReset).dbid}';`)})
+<<<<<<< HEAD
                         .then(data=>{response.write(JSON.stringify({link: `https://abox-project.xyz/frontend/signinPage/html/signin.html`})); response.end()})
+=======
+                        .then(data=>{response.write(JSON.stringify({link: `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`})); response.end()})
+>>>>>>> a5ab2df (added message to homepage)
                         .catch(error=>{response.write(JSON.stringify({message: `database issue`})); response.end(); console.log(JSON.stringify({message: `${error}`}))})
                     }
                     else{
@@ -177,18 +213,28 @@ let num = 1;
             request.on('end', ()=>{
                 pool.query(`SELECT * FROM users WHERE email = '${JSON.parse(useremail).email}';`)
                 .then(data=>{
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5ab2df (added message to homepage)
                     //send email code
                     const transport = mail.createTransport({
                         host: 'smtp.gmail.com',
                         port: 465,
                         secure: true,
                         auth: {
+<<<<<<< HEAD
                             user: 'email',
                             pass: 'password'
+=======
+                            user: 'aboxreset@gmail.com',
+                            pass: 'aboxproject123?'
+>>>>>>> a5ab2df (added message to homepage)
                         }
                     })
 
                     const mailObject = {
+<<<<<<< HEAD
                         from: '<email>',
                         to: `${JSON.parse(useremail).email}`,
                         subject: 'Reset Password',
@@ -196,6 +242,16 @@ let num = 1;
                     }
 
                     transport.sendMail(mailObject)
+=======
+                        from: '<abox@gmail.com>',
+                        to: `${JSON.parse(useremail).email}`,
+                        subject: 'Reset Password',
+                        text: `hello, ${data.rows[0].name}\n\nclick on the link below to reset your password:\n\nhttp://${os.networkInterfaces().wlan0[0].address}:8081/frontend/forgottenPage/html/index.html/?${data.rows[0].id}`
+                    }
+
+                    transport.sendMail(mailObject)
+
+>>>>>>> a5ab2df (added message to homepage)
                 })
                 .then(data=>{
                     pool.query(`UPDATE users SET reset = 'ALLOW' WHERE email = '${JSON.parse(useremail).email}';`)
@@ -204,7 +260,11 @@ let num = 1;
                     response.write(JSON.stringify({message:`Click on the link sent to your email to continue in a few minutes`})); 
                     response.end()
                 })
+<<<<<<< HEAD
                 .catch(error=>{response.write(JSON.stringify({message:`user with that email does not exist`, error: `${error}`})); response.end(); console.log(error)})
+=======
+                .catch(error=>{response.write(JSON.stringify({message:`user with that email does not exist`})); response.end(); console.log(error)})
+>>>>>>> a5ab2df (added message to homepage)
             })
         }
 
@@ -310,7 +370,11 @@ let num = 1;
                 folder = url[4]
             }
             let to; 
+<<<<<<< HEAD
             pool.query(`SELECT * FROM users WHERE email ='${url[6].slice(0, -1).toLowerCase()}';`)
+=======
+            pool.query(`SELECT * FROM users WHERE email ='${url[6].slice(0, -3)}';`)
+>>>>>>> a5ab2df (added message to homepage)
             .then(data=>{ 
                     to = data.rows[0] 
                     pool.query(`SELECT * FROM users WHERE id = ${url[3]}`)
@@ -330,6 +394,7 @@ let num = 1;
                     .then(()=>{
                         return pool.query(`SELECT * FROM files WHERE owner = '${url[3]}' AND name = '${fileToShare}';`)
                     })
+<<<<<<< HEAD
                     .then(data=>{ 
                         if(data.rows[0].shared_with === null || undefined){
                             pool.query(`UPDATE files SET shared_with = '${to.name}' WHERE owner = ${url[3]} AND name = '${fileToShare}';`)
@@ -341,6 +406,19 @@ let num = 1;
                     })
                     .then(data=>{
                         response.write(JSON.stringify({message: `shared ${fileToShare} with ${to.name}`, with: to.name}));
+=======
+                    .then(data=>{
+                        let num = 1;
+                        let alreadyTo = data.rows[0].shared_with 
+                        if(alreadyTo === null || undefined){
+                            result = to.name
+                        }
+                        pool.query(`UPDATE files SET shared_with = '${result}' WHERE owner = ${url[3]} AND name = '${fileToShare}';`) 
+                        return result
+                    })
+                    .then(data=>{
+                        response.write(JSON.stringify({message: `shared ${fileToShare} with ${to.name}`, with: data}));
+>>>>>>> a5ab2df (added message to homepage)
                         response.end();
                     })
                    .catch(error=>{
@@ -365,7 +443,11 @@ let num = 1;
                return fs.rmdir(`./userfiles/${url[3].substring(1)}`, {recursive: true})
             })
             .then(data=>{
+<<<<<<< HEAD
                 response.write(JSON.stringify({link: `https://abox-project.xyz/frontend/goodbyePage/goodbye.html`}))
+=======
+                response.write(JSON.stringify({link: `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/goodbyePage/goodbye.html`}))
+>>>>>>> a5ab2df (added message to homepage)
                 response.end()
             })
             .catch(error=>{response.write(JSON.stringify({message: 'domething went wrong', error: `${error}`})); response.end();console.log(error)})
@@ -378,6 +460,7 @@ let num = 1;
                 if(JSON.parse(inforeceived).field === 'password'){
                     bcrypt.hash(JSON.parse(inforeceived).value, 10)
                     .then(hash=>{
+<<<<<<< HEAD
                         return pool.query(`UPDATE users SET password = '${hash}' WHERE id = ${url[3].substring(1)}`)
                     }) 
                     .then(data=>{
@@ -387,6 +470,13 @@ let num = 1;
                     .catch(error=>{
                         response.write(JSON.stringify({message:'something went wrong', error: `${error}`}));
                         response.end();
+=======
+                        return pool.query(`UPDATE users SET password = '${hash}' WHERE id = ${url[3].substring(1)};`)
+                    }) 
+                    .catch(error=>{
+                        response.write(JSON.stringify({message:'something went wrong', error: `${error}`}))
+                        response.end()
+>>>>>>> a5ab2df (added message to homepage)
                       })
                   }
                   else{
@@ -432,10 +522,16 @@ let num = 1;
             let inforeceived = ''; 
             request.on('data', data=>inforeceived += data)
             request.on('end', ()=>{ 
+<<<<<<< HEAD
                 pool.query(`UPDATE FILES SET name = '${JSON.parse(inforeceived).new.toLowerCase()}' WHERE owner = ${url[3]} AND name = '${JSON.parse(inforeceived).old}';`)
                 .then(data=>{
                     const newname = JSON.parse(inforeceived).new.toLowerCase();
                     return fs.rename(`./userfiles/${url[3]}/${url[4]}/${JSON.parse(inforeceived).old}`, `./userfiles/${url[3]}/${url[4]}/${newname}`)
+=======
+                pool.query(`UPDATE FILES SET name = '${JSON.parse(inforeceived).new}' WHERE owner = ${url[3]} AND name = '${JSON.parse(inforeceived).old}';`)
+                .then(data=>{
+                    return fs.rename(`./userfiles/${url[3]}/${url[4]}/${JSON.parse(inforeceived).old}`, `./userfiles/${url[3]}/${url[4]}/${JSON.parse(inforeceived).new}`)
+>>>>>>> a5ab2df (added message to homepage)
                 })
                 .then(data=>{
                     response.write(JSON.stringify({message: 'update successful'}));
@@ -529,7 +625,11 @@ let num = 1;
                 }
                 else{
                     response.writeHead(301, {
+<<<<<<< HEAD
                         'location': `https://abox-project.xyz/frontend/signinPage/html/signin.html`, 
+=======
+                        'location': `http://${os.networkInterfaces().wlan0[0].address}:8081/frontend/signinPage/html/signin.html`, 
+>>>>>>> a5ab2df (added message to homepage)
                     })
                     response.end()
                 }

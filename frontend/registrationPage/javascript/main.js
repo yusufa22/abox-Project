@@ -80,7 +80,11 @@ function e(){
             document.getElementById('popup').style.color = 'white';
             document.getElementById('six').style.color = 'black'
 
+<<<<<<< HEAD
             sendData('https://abox-project.xyz/apipost/registration')
+=======
+            sendData('http://192.168.1.65:8081/apipost/registration')
+>>>>>>> a5ab2df (added message to homepage)
             
             }
     })

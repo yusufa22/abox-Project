@@ -67,8 +67,16 @@ function z(){
         // calling function sendData to send input data to backend server for processing.
 
         
+<<<<<<< HEAD
         sendData('https://abox-project.xyz/apipost/signin')
         
 
 
 }
+=======
+        sendData('http://192.168.1.65:8081/apipost/signin')
+        
+
+
+}
+>>>>>>> a5ab2df (added message to homepage)

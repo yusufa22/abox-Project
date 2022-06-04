@@ -2,6 +2,10 @@ body, html{
     width: 100%;
     height: 100%;
     display: flex;
+<<<<<<< HEAD
+=======
+    flex-direction: column;
+>>>>>>> a5ab2df (added message to homepage)
     justify-content: center;
     align-items: center; 
 }
@@ -63,8 +67,19 @@ a:hover{
 
 #buttom{
     margin-top: 60px; 
+<<<<<<< HEAD
 }*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+=======
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+>>>>>>> a5ab2df (added message to homepage)
