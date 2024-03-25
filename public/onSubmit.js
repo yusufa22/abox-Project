@@ -67,7 +67,7 @@ function z(){
         // calling function sendData to send input data to backend server for processing.
 
         
-        sendData('http://192.168.1.65:8081/apipost/signin')
+        sendData('http://localhost:3000/api/signin')
         
 
 
