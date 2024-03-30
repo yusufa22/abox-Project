@@ -39,3 +39,6 @@ jobs:
 
             - name: setup terraform cli
               uses: hashicorp/setup-terraform@v3
+
+            - name: run terraform script
+              run: terraform init && terraform fmt && terraform apply

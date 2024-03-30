@@ -2,6 +2,7 @@ node_modules
 .next
 .vscode
 .gitignore
+.github
 README.md
 .dockerignore
 .git
