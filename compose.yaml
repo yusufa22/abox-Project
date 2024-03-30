@@ -1,5 +1,0 @@
-services:
- abox-project:
-   container_name: abox-project
-   image: yusufa22/abox-project:latest
-   ports: [3000:3000]
