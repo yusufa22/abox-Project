@@ -1,2 +1,2 @@
-set up ses
-deploy app from container registry to ecs
+# set up ses
+# deploy app from container registry to ecs
