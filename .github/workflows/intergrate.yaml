@@ -29,3 +29,12 @@ jobs:
                 file: ./Dockerfile
                 push: true
                 tags: ${{ secrets.DOCKERHUB_USERNAME }}/abox-project:latest
+
+    deploy:
+        runs-on: debian-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: setup terraform cli
+              uses: hashicorp/setup-terraform@v3
