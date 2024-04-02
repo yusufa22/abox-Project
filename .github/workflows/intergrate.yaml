@@ -41,4 +41,4 @@ jobs:
               uses: hashicorp/setup-terraform@v3
 
             - name: run terraform script
-              run: terraform init && terraform fmt && terraform apply
+              run: terraform init && terraform fmt && TF_VAR_commit-ref=${{ github.sha}} terraform apply && terraform output commit-ref

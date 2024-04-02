@@ -13,11 +13,11 @@
 #   family                   = "abox-project-task"
 #   container_definitions    = jsonencode([{
 #       "name": "app-first-task",
-#       "image": "https://hub.docker.com/repository/docker/yusufa22/abox-project",
+#       "image": "https://hub.docker.com/repository/docker/yusufa22/abox-project:${var.commit-ref}",
 #       "essential": true,
 #       "portMappings": [
 #         {
-#           "containerPort": 3000,
+#           "containerPort": 80,
 #           "hostPort": 3000
 #         }
 #       ],
@@ -30,5 +30,3 @@
 #   cpu                      = 256         # Specify the CPU the container requires
 #   execution_role_arn       = ""
 # }
-
-#testing
