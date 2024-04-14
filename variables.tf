@@ -1,4 +1,4 @@
-variable "commit-ref"{
-    type = string
-    default = "latest"
+variable "commit-ref" {
+  type    = string
+  default = "latest"
 }

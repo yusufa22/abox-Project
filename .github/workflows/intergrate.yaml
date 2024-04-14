@@ -13,22 +13,11 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Login to Docker Hub
-              uses: docker/login-action@v3
-              with:
-                username: ${{ secrets.DOCKERHUB_USERNAME }}
-                password: ${{ secrets.DOCKERHUB_TOKEN }}
-
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
 
-            - name: Build and push
-              uses: docker/build-push-action@v5
-              with:
-                context: .
-                file: ./Dockerfile
-                push: true
-                tags: ${{ secrets.DOCKERHUB_USERNAME }}/abox-project:${{ github.sha }}
+            - name: Build container image and push to ECR
+              run: docker build -t public.ecr.aws/t4u4m2y7/abox-project:${{ github.sha }} . && docker push public.ecr.aws/t4u4m2y7/abox-project:${{ github.sha }}
 
     deploy:
         needs: build
@@ -41,4 +30,6 @@ jobs:
               uses: hashicorp/setup-terraform@v3
 
             - name: run terraform script
-              run: terraform init && terraform fmt && TF_VAR_commit-ref=${{ github.sha}} terraform apply && terraform output commit-ref
+              run: terraform init && terraform apply && terraform output commit-ref
+              env:
+                TF_VAR_commit-ref: ${{ github.sha}}
