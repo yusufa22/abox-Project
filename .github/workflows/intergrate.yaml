@@ -47,7 +47,7 @@ jobs:
               uses: hashicorp/setup-terraform@v3
 
             - name: run terraform script
-              run: terraform init && terraform apply --auto-approve && terraform output ip-addr && terraform output commit-ref
+              run: terraform init && terraform apply --auto-approve && terraform output ip-addr
               env:
                 TF_VAR_commit-ref: ${{ github.sha}}
                 TF_VAR_ecr-repo-uri: "${{ secrets.ECR_REPO_URI }}/abox-project"
