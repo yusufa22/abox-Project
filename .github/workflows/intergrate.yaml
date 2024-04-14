@@ -24,10 +24,10 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
             - name: login to ECR Repo
-              run: aws ecr-public get-login-password | docker login --username ${{ secrets.ECR_REPO_USERNAME }} --password-stdin ${{ secrets.ECR_REPO_URI }}
+              run: aws ecr-public get-login-password | docker login --username ${{ secrets.ECR_REPO_USERNAME }} --password-stdin 203731831126.dkr.ecr.us-east-1.amazonaws.com
 
             - name: Build container image and push to ECR
-              run: docker build -t ${{ secrets.ECR_REPO_URI }}:${{ github.sha }} . && docker push ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
+              run: docker build -t 203731831126.dkr.ecr.us-east-1.amazonaws.com/abox-project:${{ github.sha }} . && docker push 203731831126.dkr.ecr.us-east-1.amazonaws.com/abox-project:${{ github.sha }}
 
     deploy:
         needs: build
@@ -50,4 +50,4 @@ jobs:
               run: terraform init && terraform apply --auto-approve && terraform output ip-addr && terraform output commit-ref
               env:
                 TF_VAR_commit-ref: ${{ github.sha}}
-                TF_VAR_ecr-repo-uri: "${{ secrets.ECR_REPO_URI }}:${{ github.sha }}"
+                TF_VAR_ecr-repo-uri: 203731831126.dkr.ecr.us-east-1.amazonaws.com/abox-project:${{ github.sha }}
