@@ -40,6 +40,6 @@ jobs:
               uses: hashicorp/setup-terraform@v3
 
             - name: run terraform script
-              run: terraform init && terraform apply && terraform output commit-ref
+              run: terraform init && terraform apply --auto-approve && terraform output ip-addr && terraform output commit-ref
               env:
                 TF_VAR_commit-ref: ${{ github.sha}}
