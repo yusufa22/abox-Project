@@ -27,7 +27,7 @@ jobs:
               run: aws ecr get-login-password | docker login --username ${{ secrets.ECR_REPO_USERNAME }} --password-stdin ${{ secrets.ECR_REPO_URI }}
 
             - name: Build container image and push to ECR
-              run: docker build -t ${{ secrets.ECR_REPO_URI }}/abox-project:${{ github.sha }} . && docker push ${{ secrets.ECR_REPO_URI }}:${{ github.sha }}
+              run: docker build -t ${{ secrets.ECR_REPO_URI }}/abox-project:${{ github.sha }} . && docker push ${{ secrets.ECR_REPO_URI }}/abox-project:${{ github.sha }}
 
     deploy:
         needs: build
