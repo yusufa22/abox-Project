@@ -69,4 +69,4 @@ resource "aws_cloudwatch_log_group" "function_log_group" {
   }
 }
 
-#se
+#seu
