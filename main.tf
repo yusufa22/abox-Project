@@ -68,3 +68,5 @@ resource "aws_cloudwatch_log_group" "function_log_group" {
     prevent_destroy = false
   }
 }
+
+#s
