@@ -52,7 +52,7 @@ resource "aws_lambda_function" "abox-project-lambda" {
   function_name = "abox-project-lambda"
   role          = aws_iam_role.lambda_role.arn
   package_type  = "Image"
-  image_uri     = "public.ecr.aws/t4u4m2y7/abox-project:${var.commit-ref}"
+  image_uri     = "${ecr-repo-uri}:${var.commit-ref}"
 }
 
 resource "aws_lambda_function_url" "abox-project-lambda-aws_lambda_function_url" {
