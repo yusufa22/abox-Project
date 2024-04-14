@@ -24,7 +24,7 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
             - name: login to ECR Repo
-              run: aws ecr-public get-login-password | docker login --username ${{ secrets.ECR_REPO_USERNAME }} --password-stdin 203731831126.dkr.ecr.us-east-1.amazonaws.com
+              run: touch test.txt && aws ecr-public get-login-password > test.txt | cat test.txt
 
             - name: Build container image and push to ECR
               run: docker build -t 203731831126.dkr.ecr.us-east-1.amazonaws.com/abox-project:${{ github.sha }} . && docker push 203731831126.dkr.ecr.us-east-1.amazonaws.com/abox-project:${{ github.sha }}
