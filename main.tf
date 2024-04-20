@@ -32,7 +32,7 @@ resource "aws_iam_role" "lambda_role" {
 }
 
 # iam policy for lambda role
-resource "aws_iam_policy" "lambda_logging_policy" {
+resource "aws_iam_policy" "function_logging_policy" {
   name = "function-logging-policy"
   policy = jsonencode({
     "Version" : "2012-10-17",
