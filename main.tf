@@ -90,6 +90,12 @@ resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
   origin {
     domain_name = aws_lambda_function_url.abox-project-lambda-aws_lambda_function_url.function_url
     origin_id = local.my-origin-id
+    custom_origin_config {
+      https_port = 443
+      http_port = 80
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols = ["TLSv1.2"]
+    }
   }
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
