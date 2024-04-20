@@ -88,7 +88,7 @@ locals {
 resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
   aliases = ["abox-project.xyz"]
   origin {
-    domain_name = aws_lambda_function_url.abox-project-lambda-aws_lambda_function_url.function_url
+    domain_name = replace(replace(aws_lambda_function_url.abox-project-lambda-aws_lambda_function_url.function_url, "https://", ""), "/", "")
     origin_id = local.my-origin-id
     custom_origin_config {
       http_port = 80
