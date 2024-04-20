@@ -49,9 +49,7 @@ jobs:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
             - name: run terraform script
-              run: aws iam list-users
-                
-              #   terraform init && terraform plan && terraform apply --auto-approve && terraform output lambda-url
-              # env:
-              #   TF_VAR_commit-ref: ${{ github.sha}}
-              #   TF_VAR_ecr-repo-uri: "${{ secrets.ECR_REPO_URI }}/abox-project"
+              run: terraform init && terraform plan
+              env:
+                TF_VAR_commit-ref: ${{ github.sha}}
+                TF_VAR_ecr-repo-uri: "${{ secrets.ECR_REPO_URI }}/abox-project"
