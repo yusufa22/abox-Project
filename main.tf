@@ -75,4 +75,36 @@ resource "aws_cloudwatch_log_group" "function_log_group" {
   }
 }
 
-#seu
+#cloudfront disribution for giving lambda a custom domain name
+
+data "aws_acm_certificate" "cert-domain" {
+  domain   = "abox-project.xyz"
+}
+
+locals {
+    my-origin-id = "abox-project-lambda-disribution-origin"
+}
+
+resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
+  aliases = "abox-project.xyz"
+  origin {
+    domain_name = aws_lambda_function_url.abox-project-lambda-aws_lambda_function_url.function_url
+    origin_id = local.my-origin-id
+  }
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.my-origin-id
+    viewer_protocol_policy = "redirect-to-https"
+  }
+  enabled = true
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["GB"]
+    }
+  }
+  viewer_certificate {
+    acm_certificate_arn = data.aws_acm_certificate.cert-domain.arn
+  }
+}
