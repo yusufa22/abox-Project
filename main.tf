@@ -106,5 +106,6 @@ resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
   }
   viewer_certificate {
     acm_certificate_arn = data.aws_acm_certificate.cert-domain.arn
+    ssl_support_method = "sni-only"
   }
 }
