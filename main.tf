@@ -102,7 +102,7 @@ resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.my-origin-id
     viewer_protocol_policy = "redirect-to-https"
-    cache_policy_id  = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id  = "658327ea-f89d-4fab-a63d-7e88639e58f6"
   }
   enabled = true
   restrictions {
@@ -116,5 +116,3 @@ resource "aws_cloudfront_distribution" "abox-project-lambda-disribution" {
     ssl_support_method = "sni-only"
   }
 }
-
-#test
