@@ -3,6 +3,7 @@
 # dynamodb 
 # cloudfront for cdn
 
+# configuring terraform to use terraform cloud as backend
 terraform {
   cloud {
     organization = "yusufa22"
@@ -10,11 +11,12 @@ terraform {
   }
 }
 
+# defining a default resource provider
 provider "aws" {
   region = "us-east-1"
 }
 
-# iam role for lambda.
+# creating an iam role for a lambda function to assume.
 resource "aws_iam_role" "lambda_role" {
   name = "function-role"
   assume_role_policy = jsonencode({
@@ -31,7 +33,7 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-# iam policy for lambda role
+# creating an iam policy to attach to lambda role
 resource "aws_iam_policy" "function_logging_policy" {
   name = "function-logging-policy"
   policy = jsonencode({
@@ -49,11 +51,13 @@ resource "aws_iam_policy" "function_logging_policy" {
   })
 }
 
+# attach policy to lambda role
 resource "aws_iam_role_policy_attachment" "function_logging_policy_attachment" {
   role       = aws_iam_role.lambda_role.id
   policy_arn = aws_iam_policy.function_logging_policy.arn
 }
 
+# creating the lambda to run app container
 resource "aws_lambda_function" "abox-project-lambda" {
   function_name = "abox-project-lambda"
   role          = aws_iam_role.lambda_role.arn
@@ -61,12 +65,13 @@ resource "aws_lambda_function" "abox-project-lambda" {
   image_uri     = "${var.ecr-repo-uri}:${var.commit-ref}"
 }
 
+# creating a function url to trigger the execution of lambda
 resource "aws_lambda_function_url" "abox-project-lambda-aws_lambda_function_url" {
   function_name      = aws_lambda_function.abox-project-lambda.function_name
   authorization_type = "NONE"
 }
 
-# cloudwatch log group for lambda.
+# creating a cloudwatch log group for lambda.
 resource "aws_cloudwatch_log_group" "function_log_group" {
   name              = "/aws/lambda/${aws_lambda_function.abox-project-lambda.function_name}"
   retention_in_days = 7
@@ -75,7 +80,7 @@ resource "aws_cloudwatch_log_group" "function_log_group" {
   }
 }
 
-#cloudfront disribution for giving lambda a custom domain name
+# creating a cloudfront disribution for giving lambda a custom domain name
 
 data "aws_acm_certificate" "cert-domain" {
   domain   = "abox-project.xyz"
